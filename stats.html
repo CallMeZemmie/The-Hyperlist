@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stats Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="stats">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a class="tab" href="mainlist.html">Main List</a>
+      <a class="tab" href="submissions.html">Submissions</a>
+      <a class="tab active" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Stats Viewer</h1>
+    <p class="muted">All users sorted by points (descending). Points awarded for approved completions on top-100 levels.</p>
+    <div id="stats-area" class="card"></div>
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>initPage('stats')</script>
+</body>
+</html>

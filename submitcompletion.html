@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Submit Completion</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="submitcompletion">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a class="tab" href="mainlist.html">Main List</a>
+      <a class="tab" href="submissions.html">Submissions</a>
+      <a class="tab" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <a href="submissions.html" class="back-link muted">← Back to Submissions</a>
+    <div class="card form-card">
+      <h2>Submit Completion</h2>
+      <form id="submit-completion-form" class="form">
+        <select class="input" id="comp-level" required></select>
+        <input class="input" id="comp-youtube" placeholder="YouTube proof *" required>
+        <input class="input" id="comp-raw" placeholder="Raw footage link *" required>
+        <div style="margin-top:12px"><button class="form submit" type="submit">Submit Completion</button></div>
+        <div id="comp-msg" class="muted" style="margin-top:8px"></div>
+      </form>
+    </div>
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>initPage('submitcompletion')</script>
+</body>
+</html>

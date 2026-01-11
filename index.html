@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demonlist — Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="index">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a href="mainlist.html">Main List</a>
+      <a href="submissions.html">Submissions</a>
+      <a href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <section id="login-panel" class="card auth-card">
+      <h1>Log In</h1>
+      <form id="login-form" class="form" autocomplete="off">
+        <!-- note: class="input" so styles.css applies -->
+        <input id="li-username" class="input" placeholder="Username" required>
+        <input id="li-password" class="input" type="password" placeholder="Password" required>
+        <button class="primary" type="submit">Log In</button>
+        <div id="login-msg" class="msg hidden"></div>
+      </form>
+      <div class="or-sep"><span>Or</span></div>
+      <button class="outline" id="show-signup">Create account</button>
+    </section>
+
+    <section id="signup-panel" class="card auth-card hidden">
+      <h1>Create Account</h1>
+      <form id="signup-form" class="form" autocomplete="off">
+        <input id="su-username" class="input" placeholder="Username (no spaces; allowed (){}[] . _ - ? !)" required>
+        <input id="su-password" class="input" type="password" placeholder="Password (min 6)" required>
+        <select id="su-nationality" class="input" required>
+          <option value="">Select nationality</option>
+          <optgroup label="Europe">
+            <option>Austria</option><option>Belgium</option><option>Hungary</option><option>Germany</option><option>France</option><option>United Kingdom</option><option>Romania</option><option>Bulgaria</option><option>Italy</option>
+          </optgroup>
+          <optgroup label="Asia">
+            <option>Japan</option><option>China</option><option>India</option><option>South Korea</option><option>Indonesia</option>
+          </optgroup>
+          <optgroup label="Americas">
+            <option>United States</option><option>Canada</option><option>Mexico</option><option>Brazil</option>
+          </optgroup>
+        </select>
+        <button class="primary" type="submit">Create Account</button>
+        <div id="signup-msg" class="msg hidden"></div>
+      </form>
+      <div class="or-sep"><span>Or</span></div>
+      <button class="outline" id="show-login">Back to Login</button>
+    </section>
+  </main>
+
+  <script src="scripts.js"></script>
+  <script>initPage('index')</script>
+</body>
+</html>

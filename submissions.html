@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demonlist — Submissions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="submissions">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a class="tab" href="mainlist.html">Main List</a>
+      <a class="tab active" href="submissions.html">Submissions</a>
+      <a class="tab" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1 class="page-title">Submissions</h1>
+      <div class="page-sub muted">
+        Submit a new level or a completion for an existing level.
+      </div>
+    </div>
+
+    <!-- ACTION CARDS -->
+    <div class="card-grid" style="margin-bottom:24px; grid-template-columns: repeat(2,1fr);">
+
+      <div class="card action-card">
+        <div class="icon-circle">📄</div>
+        <h3>Submit Level</h3>
+        <p class="muted">
+          Submit a new level to be reviewed and added to the demon list
+        </p>
+        <div style="margin-top:auto">
+          <a class="btn" href="submitlevel.html">Submit Level</a>
+        </div>
+      </div>
+
+      <div class="card action-card">
+        <div class="icon-circle">✅</div>
+        <h3>Submit Completion</h3>
+        <p class="muted">
+          Submit a completion for a level already on the list
+        </p>
+        <div style="margin-top:auto">
+          <a class="btn" href="submitcompletion.html">Submit Completion</a>
+        </div>
+      </div>
+
+      <!-- CENTERED THIRD CARD -->
+      <div class="card action-card"
+           style="grid-column:1 / -1; justify-self:center; max-width:720px; width:100%;">
+        <div class="icon-circle">✏️</div>
+        <h3>Edit Submissions</h3>
+        <p class="muted">
+          View or delete your pending submissions
+        </p>
+        <div style="margin-top:auto">
+          <a class="btn" href="mysubmissions.html">Manage Submissions</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SUBMISSION RULES -->
+    <section class="card" style="max-width:960px;margin:0 auto;text-align:center;">
+      <h2 style="margin-top:0">Submission Rules</h2>
+
+      <div style="margin:16px auto; color:var(--muted); line-height:1.6; font-size:15px;">
+
+        <h3>Level Standards</h3>
+        <div style="display:inline-block; text-align:left; max-width:760px;">
+          <ul>
+            <li>Moderators check decoration, gameplay, and overall quality.</li>
+            <li>Layouts are accepted, but gameplay must be original.</li>
+            <li>Copying levels results in warnings or bans.</li>
+          </ul>
+        </div>
+
+        <h3>CBF and Hacks</h3>
+        <div style="display:inline-block; text-align:left; max-width:760px;">
+          <ul>
+            <li>CBF (Click Between Frames) is allowed.</li>
+            <li>Hacks such as noclip or hitbox mods are forbidden.</li>
+          </ul>
+        </div>
+
+        <h3>Consequences</h3>
+        <div style="display:inline-block; text-align:left; max-width:760px;">
+          <ul>
+            <li><strong>First Offense:</strong> Warning.</li>
+            <li><strong>Second Offense:</strong> Temporary ban.</li>
+            <li><strong>Severe Violations:</strong> Permanent ban.</li>
+          </ul>
+        </div>
+
+        <h3>Playing the List</h3>
+        <div style="display:inline-block; text-align:left; max-width:760px;">
+          <ul>
+            <li>Proof via YouTube or watchable footage is required.</li>
+            <li>Thank you for choosing our list — keep it fair!</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>initPage('submissions')</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demonlist — Main List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="mainlist">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a class="tab active" href="mainlist.html">Main List</a>
+      <a class="tab" href="submissions.html">Submissions</a>
+      <a class="tab" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1 class="page-title">Main List</h1>
+      <div class="page-sub muted">Ranked, moderator-approved demon levels. Click a row to expand and watch the showcase inline.</div>
+    </div>
+
+    <div id="list-area" class="list-area"></div>
+  </main>
+
+  <!-- storage.js must be loaded before scripts.js -->
+  <script src="storage.js"></script>
+  <script src="scripts.js"></script>
+
+  <script>
+    // storage.js auto-initializes. Run page init after DOM is ready.
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof initPage === 'function') initPage('mainlist');
+    });
+  </script>
+</body>
+</html>

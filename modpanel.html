@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demonlist — Mod Panel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="modpanel">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists — Mod Panel</div>
+    <nav class="topnav">
+      <a class="tab" href="mainlist.html">Main List</a>
+      <a class="tab" href="submissions.html">Submissions</a>
+      <a class="tab" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1 class="page-title">Moderator Panel</h1>
+      <div class="page-sub muted">Manage submissions, rankings, banned users and see an audit trail.</div>
+    </div>
+
+    <section class="card mod-section">
+      <h2>Pending Submissions</h2>
+      <div id="pending-submissions" class="mod-list"></div>
+    </section>
+
+    <section class="card mod-section">
+      <h2>Ranking Editor</h2>
+      <div id="ranking-editor" style="min-height:80px"></div>
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">Use the arrows to swap placement. <span style="margin-left:8px">✕ removes level permanently. ✎ edit tags.</span></div>
+    </section>
+
+    <section class="card mod-section">
+      <h2>Ban / Unban Users</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <input id="ban-username" class="input" placeholder="Username to ban">
+        <input id="ban-days" class="input" placeholder="Days (0 = permanent)" type="number" min="0" style="width:160px">
+        <input id="ban-reason" class="input" placeholder="Reason">
+        <button id="ban-btn" class="btn">Ban user</button>
+      </div>
+
+      <h3 style="margin-top:8px">Banned users</h3>
+      <div id="banned-users-list" style="margin-top:8px"></div>
+    </section>
+
+    <section class="card mod-section">
+      <h2>Audit Log</h2>
+      <div id="mod-audit-log" style="min-height:80px"></div>
+    </section>
+
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>initPage('modpanel')</script>
+</body>
+</html>

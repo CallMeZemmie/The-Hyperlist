@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Submit Level</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="submitlevel">
+  <header class="topbar">
+    <div class="site-title">The All Levels Lists</div>
+    <nav class="topnav">
+      <a class="tab" href="mainlist.html">Main List</a>
+      <a class="tab" href="submissions.html">Submissions</a>
+      <a class="tab" href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <a href="submissions.html" class="back-link muted">← Back to Submissions</a>
+
+    <div class="card form-card">
+      <h2>Submit Level</h2>
+      <form id="submit-level-form" class="form">
+        <input class="input" id="lev-name" placeholder="Level Name *" required>
+        <input class="input" id="lev-creators" placeholder="Creators (comma separated) *" required>
+        <input class="input" id="lev-id" placeholder="Level ID *" required>
+        <input class="input" id="lev-youtube" placeholder="YouTube link *" required>
+        <input class="input" id="lev-raw" placeholder="Raw footage link *" required>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:700;margin-bottom:8px">Pick tags (choose at least one)</div>
+
+          <div id="tag-picker" class="tag-picker">
+            <!-- Buttons inserted in DOM or can be hard-coded; I'll hard-code for clarity -->
+            <button type="button" class="tagbtn tag-cube" data-tag="Cube Carried">Cube Carried</button>
+            <button type="button" class="tagbtn tag-ship" data-tag="Ship Carried">Ship Carried</button>
+            <button type="button" class="tagbtn tag-wave" data-tag="Wave Carried">Wave Carried</button>
+            <button type="button" class="tagbtn tag-ufo" data-tag="Ufo Carried">Ufo Carried</button>
+            <button type="button" class="tagbtn tag-ball" data-tag="Ball Carried">Ball Carried</button>
+            <button type="button" class="tagbtn tag-spider" data-tag="Spider Carried">Spider Carried</button>
+            <button type="button" class="tagbtn tag-swing" data-tag="Swing Carried">Swing Carried</button>
+
+            <button type="button" class="tagbtn tag-length-default" data-tag="Medium Length">Medium Length</button>
+            <button type="button" class="tagbtn tag-length" data-tag="Long Length">Long Length</button>
+            <button type="button" class="tagbtn tag-length-xl" data-tag="XL Length">XL Length</button>
+            <button type="button" class="tagbtn tag-length-xxl" data-tag="XXL Length (3+ Minutes)">XXL Length (3+ Minutes)</button>
+
+            <button type="button" class="tagbtn tag-slow" data-tag="Slow Paced">Slow Paced</button>
+            <button type="button" class="tagbtn tag-fast" data-tag="Fast Paced">Fast Paced</button>
+
+            <button type="button" class="tagbtn tag-memory" data-tag="Memory Level">Memory Level</button>
+            <button type="button" class="tagbtn tag-visibility" data-tag="Visibility Level">Visibility Level</button>
+          </div>
+          <div id="tags-hint" class="muted" style="margin-top:8px">Click tags to toggle them on/off. Selected tags will appear on the Main List.</div>
+        </div>
+
+        <div style="margin-top:12px"><button class="form submit" type="submit">Submit Level</button></div>
+        <div id="lev-msg" class="muted" style="margin-top:8px"></div>
+      </form>
+    </div>
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>
+    // Ensure the page wiring runs via the global initPage
+    initPage('submitlevel');
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demonlist — Profile</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== Local profile overrides ===== */
+    .profile-shell {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr) 320px;
+      gap: 22px;
+      align-items: start;
+      width: 100%;
+    }
+    @media (max-width: 1100px) { .profile-shell { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 18px;
+      box-sizing: border-box;
+    }
+
+    .profile-avatar { display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
+    #profile-pic-preview { width:160px; height:160px; border-radius:12px; object-fit:cover; background:#0b0b0b; border:1px solid rgba(255,255,255,0.03); }
+    .username { font-weight:800; font-size:20px; }
+
+    /* Ensure left preview bio wraps and doesn't stay on one line */
+    #pl-bio {
+      margin-top:12px;
+      color: rgba(255,255,255,0.7);
+      font-size:14px;
+      white-space: normal !important;         /* allow wrapping */
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      hyphens: auto;
+      max-height: 240px;
+      text-align: center;
+    }
+
+    /* Editor / textarea */
+    .bio-area textarea {
+      width:100%;
+      min-height:140px;
+      padding:12px;
+      border-radius:10px;
+      resize:vertical;
+      box-sizing:border-box;
+      overflow:auto;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.03);
+      color: inherit;
+      writing-mode: horizontal-tb !important;
+      direction: ltr !important;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* small helper to display the limit */
+    .bio-limit { font-size:13px; color: rgba(255,255,255,0.55); margin-top:6px; }
+
+    /* hide placement control but keep DOM id */
+    #profile-show-placement { display:none !important; }
+
+    /* prevent panels forcing width */
+    .panel, #profile-right, .panel-completions { min-width: 0 !important; box-sizing: border-box; }
+
+    /* prevent horizontal scrolling */
+    html, body { overflow-x: hidden; }
+  </style>
+</head>
+<body data-page="profile">
+  <header class="topbar">
+    <div class="site-title">Profile</div>
+    <nav class="topnav">
+      <a href="mainlist.html">Main List</a>
+      <a href="submissions.html">Submissions</a>
+      <a href="stats.html">Stats Viewer</a>
+    </nav>
+    <div class="profile-area" id="profile-area"></div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1 class="page-title">Profile</h1>
+      <div class="page-sub muted">Edit your profile or view others' profiles (read-only).</div>
+    </div>
+
+    <section class="card">
+      <div class="profile-shell">
+        <!-- LEFT: Avatar & basic preview -->
+        <aside class="panel profile-avatar" id="profile-left">
+          <img id="profile-pic-preview" src="" alt="Profile picture preview">
+          <div class="username" id="pl-username">username</div>
+          <div id="pl-title" style="color:rgba(255,255,255,0.6)"></div>
+          <div id="pl-country" style="color:rgba(255,255,255,0.6);font-size:13px"></div>
+          <div id="pl-bio">User bio preview</div>
+        </aside>
+
+        <!-- MIDDLE: Editor -->
+        <main class="panel" id="profile-right">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700;font-size:16px" id="editor-name">Editing</div>
+              <div class="sub-muted" style="font-size:13px">Manage your profile details and titles</div>
+            </div>
+            <div class="sub-muted" style="font-size:13px">Account options</div>
+          </div>
+
+          <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-top:12px">
+            <div style="flex:0 0 320px">
+              <label class="sub-muted" style="display:block;margin-bottom:6px">Avatar</label>
+              <input id="profile-pic-input" type="file" accept="image/*">
+              <div id="profile-pic-msg" class="sub-muted" style="margin-top:8px;font-size:13px"></div>
+            </div>
+
+            <div style="flex:1;min-width:200px">
+              <label class="sub-muted" style="display:block;margin-bottom:6px">Bio (max 100 chars)</label>
+              <div class="bio-area">
+                <textarea id="profile-bio" maxlength="100" placeholder="Write something about yourself..."></textarea>
+              </div>
+              <div class="bio-limit" id="bio-count">0 / 100</div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px">
+            <div style="display:flex;gap:12px;align-items:center">
+              <label style="display:none"><input id="profile-show-placement" type="checkbox"> Show Placement Title</label>
+              <label style="display:flex;gap:8px;align-items:center"><input id="profile-show-country" type="checkbox"> Show country emoji</label>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button id="profile-save-btn" class="btn primary">Save Profile</button>
+              <button id="profile-cancel" class="btn ghost">Cancel</button>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h3 style="margin:0 0 6px">Available Titles</h3>
+            <div id="profile-titles-list"></div>
+            <div class="sub-muted" style="margin-top:8px">Click a title to equip it. Only your account may change titles.</div>
+          </div>
+        </main>
+
+        <!-- RIGHT: Completions & account meta -->
+        <aside class="panel panel-completions">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Completions</strong>
+            <div class="sub-muted" id="comp-count">0</div>
+          </div>
+
+          <div id="profile-completions" class="completions-list" style="margin-top:12px">
+            <div class="sub-muted">No completions</div>
+          </div>
+
+          <div style="margin-top:14px;border-top:1px dashed rgba(255,255,255,0.02);padding-top:12px">
+            <div class="sub-muted" style="font-size:13px">Account</div>
+            <div style="margin-top:8px">
+              <div class="sub-muted">Role</div>
+              <div id="account-role" style="font-weight:700;margin-top:4px">Player</div>
+            </div>
+            <div style="margin-top:10px">
+              <div class="sub-muted">Points</div>
+              <div id="account-points" style="font-weight:700;margin-top:4px">0</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+<script src="storage.js"></script>
+<script src="scripts.js"></script>
+
+  <script>initPage('profile')</script>
+
+  <!-- Small UI script: live bio counter + preview hookup (keeps existing save logic compatible) -->
+  <script>
+    (function(){
+      function onReady(fn){ if(document.readyState==='complete' || document.readyState==='interactive') setTimeout(fn,50); else document.addEventListener('DOMContentLoaded', fn); }
+      onReady(function(){
+        const bio = document.getElementById('profile-bio');
+        const bioCount = document.getElementById('bio-count');
+        const pfpInput = document.getElementById('profile-pic-input');
+        const pfpPreview = document.getElementById('profile-pic-preview');
+
+        // live counter + safety (truncate if needed)
+        if(bio && bioCount){
+          function updateCount(){
+            if(bio.value.length > 100) bio.value = bio.value.slice(0,100);
+            bioCount.textContent = bio.value.length + ' / 100';
+          }
+          bio.addEventListener('input', updateCount);
+          updateCount();
+        }
+
+        // file preview only (save still handled by scripts.js save handler)
+        if(pfpInput && pfpPreview && window.FileReader && typeof setImgSrcWithFallback === 'function'){
+          pfpInput.addEventListener('change', function(){
+            const f = pfpInput.files && pfpInput.files[0];
+            if(!f) return;
+            const reader = new FileReader();
+            reader.onload = function(ev){ try{ setImgSrcWithFallback(pfpPreview, ev.target.result); } catch(e){ pfpPreview.src = ev.target.result; } };
+            reader.readAsDataURL(f);
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

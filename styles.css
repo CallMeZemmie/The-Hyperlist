@@ -1,0 +1,354 @@
+:root{
+  --bg:#070707;
+  --panel:#0f0f10;
+  --muted:#a9a9a9;
+  --white:#ffffff;
+  --border:rgba(255,255,255,0.04);
+  --ease:cubic-bezier(.22,.9,.37,1);
+}
+
+/* Reset & base */
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#060606,#0c0c0c);color:var(--white);}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Topbar */
+.topbar{display:flex;align-items:center;gap:20px;padding:14px 28px;background:linear-gradient(180deg,#0c0c0c,#111);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30}
+.site-title{font-weight:800;font-size:18px}
+.topnav{display:flex;gap:8px;margin-left:18px;align-items:center}
+.topnav a{padding:8px 12px;border-radius:10px;color:var(--muted)}
+.topnav a:hover{color:var(--white);background:#111}
+.tab{padding:8px 14px;border-radius:12px;color:var(--muted);cursor:pointer;border:1px solid transparent;transition:all .18s var(--ease)}
+.tab:hover{color:var(--white);background:#111}
+.tab.active{background:var(--white);color:#000;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.profile-area{margin-left:auto;display:flex;gap:10px;align-items:center}
+.profile-area .small-btn{min-width:120px;padding:8px 10px;text-align:center;display:inline-block}
+
+/* Profile mini avatar in topbar */
+.topbar .profile-circle{width:36px;height:36px;border-radius:50%;overflow:hidden;flex:none;background:#0b0b0b;margin-right:8px}
+.topbar .profile-circle img{width:100%;height:100%;object-fit:cover}
+
+/* Layout */
+.container{max-width:1100px;margin:28px auto;padding:0 20px}
+.hero{margin:12px 0 18px}
+.page-title{font-size:32px;font-weight:800;margin-bottom:6px}
+.page-sub{color:var(--muted);margin-bottom:20px}
+
+/* Cards & grids */
+.card{background:linear-gradient(180deg,#0f0f12,#141416);border-radius:12px;padding:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* Buttons */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;color:#000;cursor:pointer;font-weight:700}
+.btn.ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.06)}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)}
+.btn.safe{border:1px solid #4cff4c;color:#4cff4c;background:transparent;padding:8px 10px;border-radius:8px}
+.btn.danger{border:1px solid #ff6b6b;color:#ff6b6b;background:transparent;padding:8px 10px;border-radius:8px}
+.small-btn{font-size:13px;padding:8px 10px}
+
+/* Form controls */
+input, select, textarea, button { font-family: inherit; color: var(--white); background: #0c0c0c; border: 1px solid var(--border); padding: 10px 12px; border-radius: 8px; outline: none; }
+input::placeholder, textarea::placeholder { color: var(--muted); }
+.input { display:block; width:100%; }
+
+/* Auth card center (wider) */
+.auth-card{max-width:960px;margin:0 auto;text-align:center;padding:28px}
+body[data-page="index"] .container{min-height: calc(100vh - 40px);display:flex;align-items:center;justify-content:center;padding-top:0;padding-bottom:0}
+
+/* Tag picker */
+.tag-picker { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.tag-picker .tagbtn { padding:8px 10px; border-radius:999px; background:transparent; border:2px solid rgba(255,255,255,0.06); color:var(--white); cursor:pointer; font-weight:700; font-size:13px; transition:transform .12s var(--ease), box-shadow .12s var(--ease); }
+.tag-picker .tagbtn:hover { transform:translateY(-3px); }
+.tag-picker .tagbtn.selected { background: rgba(255,255,255,0.04); box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+
+/* Tag badges */
+.tag-badges { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; justify-content:flex-start; }
+.tag-badge { padding:4px 8px; border-radius:999px; font-size:11px; border:2px solid rgba(255,255,255,0.08); background:transparent; color:var(--white); font-weight:700; white-space: nowrap; }
+.tag-badge-cube { border-color:#30c75b; color:#30c75b; background: rgba(48,199,91,0.04); }
+.tag-badge-ship { border-color:#ff7fcf; color:#ff7fcf; background: rgba(255,127,207,0.04); }
+.tag-badge-wave { border-color:#2fe8f6; color:#2fe8f6; background: rgba(47,232,246,0.04); }
+.tag-badge-ufo  { border-color:#ff9f4a; color:#ff9f4a; background: rgba(255,159,74,0.04); }
+.tag-badge-ball { border-color:#ff6b6b; color:#ff6b6b; background: rgba(255,107,107,0.04); }
+.tag-badge-spider{ border-color:#b57bff; color:#b57bff; background: rgba(181,123,255,0.04); }
+.tag-badge-swing { border-color:#ffd24d; color:#ffd24d; background: rgba(255,210,77,0.04); }
+.tag-badge-default { border-color: rgba(255,255,255,0.12); color:var(--white); background: rgba(255,255,255,0.02); }
+
+/* Main list */
+.list-area{margin-top:8px}
+.level-row{ background:linear-gradient(180deg,#0d0d0f,#121214); border-radius:10px; border:1px solid var(--border); margin-bottom:12px; overflow:visible; transition:transform .18s var(--ease) }
+.level-row:hover{ transform:translateY(-3px) }
+.level-header{ display:grid; grid-template-columns:64px 96px 1fr 160px; gap:12px; align-items:center; padding:12px 16px; cursor:pointer }
+.placement{ font-weight:900; font-size:22px; text-align:center }
+.thumb{ width:96px; height:60px; background:#0b0b0b; border-radius:6px; flex:none; overflow:hidden }
+.thumb img{ width:100%; height:100%; object-fit:cover }
+.level-meta{ display:flex; flex-direction:column; gap:6px }
+.level-name{ font-weight:800; }
+.level-sub{ color:var(--muted); font-size:13px; }
+.row-actions{ color:var(--muted); font-size:13px; text-align:right }
+
+/* collapsed single-line header to avoid clipping */
+.level-row:not(.open) .level-name,
+.level-row:not(.open) .level-sub { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.level-row.open .level-name,
+.level-row.open .level-sub { white-space:normal; overflow:visible; text-overflow:unset; }
+
+.accordion{ max-height:0; overflow:hidden; transition:max-height .28s var(--ease), opacity .22s var(--ease); opacity:0 }
+.level-row.open .accordion{ opacity:1; max-height:720px; padding:12px 16px; border-top:1px solid var(--border) }
+.expanded{ display:grid; grid-template-columns:160px 1fr; gap:12px; align-items:start }
+.expanded-thumb{ width:160px; height:90px; border-radius:8px; overflow:hidden; background:#0b0b0b }
+.expanded-thumb img{ width:100%; height:100%; object-fit:cover }
+.expanded-video{ background:#000; border-radius:8px; overflow:hidden; padding:6px }
+.expanded-video iframe{ width:100%; height:320px; border:0; border-radius:6px }
+
+/* Title list style */
+.title-row{ display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:linear-gradient(180deg,#0f0f12,#141416); }
+.title-main{ font-weight:900; font-size:18px; }
+.title-sub{ font-size:13px; color:var(--muted); margin-top:6px; }
+
+/* Profile layout - two columns with centered preview on edit */
+.profile-grid{ display:grid; grid-template-columns: 320px 1fr; gap:20px; align-items:start; }
+#profile-left{ display:flex; flex-direction:column; gap:8px; align-items:center; }
+#profile-right{ display:flex; flex-direction:column; gap:12px; }
+
+/* editor top preview centered */
+#profile-preview-center{ display:flex; flex-direction:column; align-items:center; gap:8px; margin-bottom:12px; }
+#profile-preview-center img{ width:160px;height:160px;border-radius:50%; object-fit:cover; background:#0b0b0b; border:2px solid rgba(255,255,255,0.04) }
+
+/* center titles/completions containers so they appear in middle of right column */
+#profile-titles-list, #profile-completions, #public-titles, #public-completions { max-width:720px; margin:0 auto; text-align:left; }
+
+/* clickable user link */
+.user-link{ color:inherit; text-decoration:none; border-bottom:1px solid rgba(200,200,200,0.22); padding-bottom:2px; }
+.user-link:hover{ opacity:0.9; }
+
+/* mention autocomplete */
+#mention-autocomplete{ position:absolute; min-width:220px; background:#0f0f12; border:1px solid rgba(255,255,255,0.06); padding:6px; border-radius:8px; z-index:99999; box-shadow:0 8px 30px rgba(0,0,0,0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+
+/* small helpers */
+.hidden{ display:none }
+.muted{ color:var(--muted); font-size:13px }
+
+/* MOD PANEL: player search styling */
+#player-search-area{ display:flex; gap:8px; align-items:center; margin-top:12px; }
+#player-search-area input { width:320px; }
+#player-search-results{ margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+.player-card{ display:flex; justify-content:space-between; align-items:center; padding:10px; border-radius:8px; background:linear-gradient(180deg,#0f0f12,#141416); border:1px solid var(--border); }
+
+/* Stats page wide layout: make the container stretch for stats page */
+body[data-page="stats"] .container{ max-width: none; width: calc(100% - 40px); margin: 12px auto; padding: 0 20px; }
+
+/* Stats table flexible layout */
+.stats-table-header, .stats-table-row{ display:flex; gap:12px; align-items:center; padding:8px 0; width:100%; }
+.stats-table-header > div, .stats-table-row > div { flex:1 1 0; min-width:0; }
+.stats-table-header > div:nth-child(1), .stats-table-row > div:nth-child(1) { flex: 2 1 220px; } /* username bigger */
+.stats-table-header > div:nth-child(2), .stats-table-row > div:nth-child(2) { flex:1 1 140px; }
+.stats-table-header > div:nth-child(3), .stats-table-row > div:nth-child(3) { flex:1 1 160px; }
+.stats-table-header > div:nth-child(4), .stats-table-row > div:nth-child(4) { flex:0 0 120px; text-align:left; }
+.stats-table-header > div:nth-child(5), .stats-table-row > div:nth-child(5) { flex:0 0 120px; text-align:left; }
+
+/* responsive */
+@media (max-width:900px){
+  .profile-grid{ grid-template-columns: 1fr; }
+  #profile-left{ align-items:center }
+  .level-header{ grid-template-columns:48px 1fr; gap:10px }
+  .expanded{ grid-template-columns:1fr }
+  .expanded-video iframe{ height:200px }
+  .card-grid{ grid-template-columns:1fr }
+  .thumb{ display:none }
+  .title-row{ flex-direction:column; align-items:flex-start; gap:8px }
+  #player-search-area{ flex-direction:column; align-items:stretch }
+  #player-search-area input{ width:100%; }
+}
+
+/* ---------- Avatar / profile image fixes (paste at end of styles.css) ---------- */
+
+/* Generic small avatar used in topbar and lists */
+.profile-circle,
+.avatar,
+.user-avatar,
+.profile-thumb {
+  width: 40px;               /* default avatar size in the header/topbar */
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  flex: 0 0 40px;
+  background: #0b0b0b;
+}
+
+.profile-circle img,
+.avatar img,
+.user-avatar img,
+.profile-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* crop to fit without stretching */
+  display: block;
+  image-rendering: auto;
+}
+
+/* Slightly larger avatars used in lists or small profile widgets */
+.avatar-md,
+.profile-avatar-md {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+}
+.avatar-md img,
+.profile-avatar-md img { width:100%; height:100%; object-fit:cover; }
+
+/* Profile preview on the Edit Profile page (large circle) */
+#profile-pic-preview,
+.profile-preview-large {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+#profile-pic-preview img,
+.profile-preview-large img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* If any pages render an img directly (no wrapper), this rule catches and constrains them:
+   It is intentionally limited to files likely used as avatars by matching common attributes.
+   Remove or narrow this selector if it affects other images undesirably. */
+img.profile-img,
+img[data-role="avatar"],
+img.avatar-inline {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+}
+
+/* Ensure thumbnails in lists keep their previously set styles (safe fallback) */
+.thumb img,
+.expanded-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive adjustments: slightly larger avatars on wide screens */
+@media (min-width: 1200px) {
+  .profile-circle, .avatar, .user-avatar { width:48px; height:48px; flex:0 0 48px; }
+  .avatar-md { width:64px; height:64px; }
+  #profile-pic-preview { width:200px; height:200px; }
+}
+
+/* extra scroll space so the last elements aren't cut off */
+.container,
+.content,
+#list-area,
+main,
+body > .container,
+body > main {
+  padding-bottom: 100px !important;
+}
+
+/* ===== Mod Panel — more breathing room (paste at bottom of styles.css) ===== */
+
+/* make the sections (cards) a bit more separated */
+.card.mod-section {
+  margin-bottom: 18px !important;
+}
+
+/* treat each mod-list / editor / log as a column with gaps between items
+   this adds space between the "card-like thingies" without touching their inner padding
+*/
+#pending-submissions,
+#ranking-editor,
+#banned-users-list,
+#mod-audit-log,
+#player-mgmt-area,
+#player-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;           /* space between items — change to 16px for more space */
+}
+
+/* ensure individual item margins don't double-up with the gap */
+#pending-submissions .mod-item,
+#ranking-editor .mod-item,
+#banned-users-list .player-card,
+#mod-audit-log .card,
+.player-card,
+.mod-item {
+  margin-bottom: 0 !important;
+}
+
+/* tiny responsive tweak so spacing feels consistent on narrow screens */
+@media (max-width: 720px) {
+  #pending-submissions,
+  #ranking-editor,
+  #banned-users-list,
+  #mod-audit-log {
+    gap: 10px;
+  }
+}
+
+/* ===== Profile layout fit fix =====
+   Fixes overflow / right column off-screen by allowing grid items to shrink
+   and constraining columns so panels fit cleanly. Paste at bottom of styles.css
+*/
+
+html, body { box-sizing: border-box; }
+
+/* Ensure children can shrink inside the grid (fixes overflow) */
+.profile-shell,
+.profile-shell > * {
+  box-sizing: border-box !important;
+}
+.profile-shell > * {
+  min-width: 0 !important;        /* critical: allows the middle column to shrink */
+}
+
+/* Constrain grid columns so they fit in most viewports */
+.profile-shell {
+  grid-template-columns: 280px minmax(0, 1fr) 300px !important;
+  gap: 18px !important;
+}
+
+/* Ensure major panels don't force extra width */
+#profile-right, .panel, .panel-completions, .editor-grid, .completions-list {
+  min-width: 0 !important;
+}
+
+/* Make sure avatar and textarea don't force width */
+#profile-pic-preview { width:160px; height:160px; max-width:100% !important; }
+.bio-area textarea { min-width: 0 !important; width: 100% !important; }
+
+/* Container constraints so site doesn't scale elements too large */
+.container {
+  max-width: 1300px !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Small screens: stack columns */
+@media (max-width: 1100px) {
+  .profile-shell {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .panel-completions { order: 3 !important; }
+}
+
+/* Extra safe: prevent horizontal page scrolling from layout quirks */
+html, body { overflow-x: hidden; }
+
+
+/* End of stylesheet */
